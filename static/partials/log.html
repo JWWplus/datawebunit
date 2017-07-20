@@ -1,0 +1,32 @@
+<div>
+    总计{{datas.count}}条数据
+    <button class="btn btn-primary" ng-click="BackToHome()">返回主页</button>
+    <table class="table table-hover table-striped table-condensed" style="table-layout: fixed">
+        <thead>
+        <tr>
+            <th class="col-xs-1">修改时间</th>
+            <th class="col-xs-1">修改人</th>
+            <th class="col-xs-2">修改类型</th>
+            <th class="col-xs-4">原先内容</th>
+            <th class="col-xs-4">修改后的内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in datas.resp">
+            <td>{{data.time}}</td>
+            <td>{{data.username}}</td>
+            <td>{{data.type}}</td>
+            <td style="word-wrap: break-word">{{data.old_content}}</td>
+            <td style="word-wrap: break-word">{{data.new_content}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination
+        ng-model="curLogPage"
+        total-items= "datas.count"
+        items-per-page = "numPerPage"
+        max-size="10"
+        boundary-links="true"
+        ng-click="ClickPagination()">
+    </pagination>
+</div>

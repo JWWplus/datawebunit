@@ -1,0 +1,127 @@
+<div class="col-xs-12">
+    <div class="col-xs-4">
+        总计{{datas.count}}条数据
+        <a class="btn btn-sm btn-success " ui-sref="AddData">
+            <span class="glyphicon glyphicon-plus-sign">添加新数据</span>
+        </a>
+        <a class="btn btn-sm btn-success " ui-sref="AddVersion">
+            <span class="glyphicon glyphicon-plus-sign">增加新版本</span>
+        </a>
+    </div>
+    <form class="col-xs-4" role="form" ng-submit="Filter_category()">
+        <div class="form-group">
+            <input ng-model="filter_cate_text" type="text" class="form-control" id="Filter_Se_categroy" placeholder="后台搜索se_category数据">
+        </div>
+    </form>
+    <form class="col-xs-4" role="form" ng-submit="Filter_action()">
+        <div class="form-group">
+            <input ng-model="filter_action_text" type="text" class="form-control" id="Filter_Se_action" placeholder="后台搜索se_action数据">
+        </div>
+    </form>
+    <form class="form-inline  col-xs-8" role="form" ng-submit="selectData()">
+        <div class="form-group">
+            <label for="AppVersion">选择App版本</label>
+            <select id="AppVersion" ng-model="AppVersion" class="form-control">
+                <option ng-repeat="appversion in DataInfo.appversion">{{appversion.app_version}}</option>
+                <option value="">所有版本</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="platform">请选择平台</label>
+            <select id="platform" ng-model="platform" class="form-control">
+                <option>Android</option>
+                <option>iOS</option>
+                <option value="">所有平台</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="event">选择事件</label>
+            <select id="event" ng-model="event" class="form-control">
+                <option>点击</option>
+                <option>曝光</option>
+                <option>api</option>
+                <option>状态</option>
+                <option>滑动</option>
+                <option value="">所有事件</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="提交"/>
+        </div>
+    </form>
+    <form class="col-xs-4 form-inline" role="form">
+        <label for="page">页面选择</label>
+        <select id="page" ng-model="page" class="form-control" ng-change="selectData()">
+            <option ng-repeat="type in datas.page_type">{{type.page}}</option>
+            <option value="">所有页面</option>
+        </select>
+    </form>
+
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>App版本</th>
+            <th>平台</th>
+            <th>页面</th>
+            <th>事件</th>
+            <th>对象</th>
+            <th>page_key</th>
+            <th class="sr-only">type</th>
+            <th class="sr-only">pm</th>
+            <th>sub_type</th>
+            <th class="sr-only">额外信息</th>
+            <th>se_category</th>
+            <th>se_action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in datas.resp">
+            <td>{{data.appversion}}</td>
+            <td>{{data.platform}}</td>
+            <td>{{data.page}}</td>
+            <td>{{data.event}}</td>
+            <td>{{data.object}}</td>
+            <td>{{data.page_key}}</td>
+            <td class="sr-only">{{data.type}}</td>
+            <td class="sr-only">{{data.pm}}</td>
+            <td>{{data.sub_type}}</td>
+            <td class="sr-only">{{data.note}}</td>
+            <td>{{data.se_category}}</td>
+            <td>{{data.se_action}}</td>
+            <td><a ui-sref="EditData({id:data.id})" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pencil">编辑</span></a></td>
+            <td><a ng-click="DeleteData(data)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash">删除</span></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination
+            ng-model="curPage"
+            total-items= "datas.count"
+            items-per-page = "numPerPage"
+            max-size="10"
+            boundary-links="true"
+            ng-click="ClickPagination()">
+    </pagination>
+    <div class="col-xs-12">
+        <table class="table table-hover table-condensed" style="table-layout: fixed">
+            <thead>
+            <tr>
+                <th class="col-xs-1">修改时间</th>
+                <th class="col-xs-1">修改人</th>
+                <th class="col-xs-2">修改类型</th>
+                <th class="col-xs-4">原先内容</th>
+                <th class="col-xs-4">修改后的内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in logdatas.loginfo">
+                <td>{{data.time}}</td>
+                <td>{{data.username}}</td>
+                <td>{{data.type}}</td>
+                <td style="word-wrap: break-word">{{data.old_content}}</td>
+                <td style="word-wrap: break-word">{{data.new_content}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

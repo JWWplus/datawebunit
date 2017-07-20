@@ -1,0 +1,108 @@
+<div class="form-group">
+    <label for="app_version" class="col-sm-2 control-label">App版本</label>
+    <div class="col-sm-10">
+        <select id="app_version" class="form-control" ng-model="data.appversion" required>
+            <option ng-repeat="appversion in DataInfo.appversion">{{appversion.app_version}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="platform" class="col-sm-2 control-label">平台</label>
+    <div class="col-sm-10">
+        <select id="platform" class="form-control" ng-model="data.platform" required>
+            <option>Android</option>
+            <option>iOS</option>
+            <option>all</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="page" class="col-sm-2 control-label">页面</label>
+    <div class="col-sm-10">
+        <input id="page" class="form-control" ng-model="data.page" type="text" placeholder="page here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="object" class="col-sm-2 control-label">对象</label>
+    <div class="col-sm-10">
+        <input id="object" class="form-control" ng-model="data.object" type="text" placeholder="object here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="event" class="col-sm-2 control-label">事件</label>
+    <div class="col-sm-10">
+        <select id="event" class="form-control" ng-model="data.event" required>
+            <option>点击</option>
+            <option>曝光</option>
+            <option>api</option>
+            <option>状态</option>
+            <option>滑动</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="page_key" class="col-sm-2 control-label">page_key</label>
+    <div class="col-sm-10">
+        <input id="page_key" class="form-control" ng-model="data.page_key" type="text" placeholder="page_key here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="type" class="col-sm-2 control-label">type</label>
+    <div class="col-sm-10">
+        <select id="type" class="form-control" ng-model="data.type" required>
+            <option>interaction</option>
+            <option>impression</option>
+            <option>search</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="sub_type" class="col-sm-2 control-label">sub_type</label>
+    <div class="col-sm-10">
+        <input id="sub_type" class="form-control" ng-model="data.sub_type" type="text" placeholder="sub_type here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="note" class="col-sm-2 control-label">额外信息</label>
+    <div class="col-sm-10">
+        <input id="note" class="form-control" ng-model="data.notes" type="text" placeholder="note here">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="pm" class="col-sm-2 control-label">负责人</label>
+    <div class="col-sm-10">
+        <input id="pm" class="form-control" ng-model="data.pm" type="text" placeholder="pm here">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="se_category" class="col-sm-2 control-label">se_category</label>
+    <div class="col-sm-10">
+        <input id="se_category" class="form-control" ng-model="data.se_category" type="text" placeholder="se_category here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="se_action" class="col-sm-2 control-label">se_action</label>
+    <div class="col-sm-10">
+        <input id="se_action" class="form-control" ng-model="data.se_action" type="text" placeholder="se_action here" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-1">
+        <input type="submit" class="btn btn-primary" value="保存"/>
+    </div>
+    <div class="col-sm-1">
+        <input type="button" class="btn btn-primary" value="返回主页面" ng-click="BackToHome()"/>
+    </div>
+</div>
