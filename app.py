@@ -24,6 +24,10 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 
 app = Flask(__name__)
 
+# Create dummy secrey key so we can use sessions
+app.config['SECRET_KEY'] = '574326d5933ab8fb840fc177'
+app.config['BASIC_AUTH_USERNAME'] = 'red_datateam'
+app.config['BASIC_AUTH_PASSWORD'] = '56e171c77aa10f7bb1ace205'
 
 # Create in-memory database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DTWEB_DBURL', 'mysql://root:@localhost/dt-web')
